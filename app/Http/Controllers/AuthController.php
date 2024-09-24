@@ -11,7 +11,7 @@ class AuthController extends Controller
 {
     public function loginForm(){
         if(Auth::check()){
-            return redirect()->route('welcome');
+            return redirect()->route('frontend.beranda');
         }else{
             return view('auth.login');
         }
@@ -24,7 +24,7 @@ class AuthController extends Controller
         ];
 
         if(Auth::attempt($data)){
-            return redirect()->route('welcome');
+            return redirect()->route('frontend.beranda');
         }else{
             return back()->withErrors([
                 'email' => 'The provided credentials do not match our records.',
@@ -34,7 +34,7 @@ class AuthController extends Controller
 
     public function registerForm(){
         if(Auth::check()){
-            return redirect('welcome');
+            return redirect('frontend.beranda');
         }else{
             return view('auth.register');
         }

@@ -5,6 +5,7 @@ use App\Http\Controllers\KandidatController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PemilihanController;
 use App\Http\Controllers\Frontend\BerandaController;
+use App\Http\Controllers\Dashboard\DashboardController;
 
 
 // Route no middleware
@@ -17,10 +18,13 @@ Route::post('/register', [AuthController::class,'registerAction']);
 // Need to login
 Route::middleware('auth')->group(function () {
     // Frontend
-    Route::get('/', [BerandaController::class, 'index'])->name('beranda');
+    Route::get('/', [BerandaController::class, 'index'])->name('frontend.beranda');
    
     // Role has to be admin
     Route::middleware('checkRole:admin')->group(function () {
+        // Dashboard
+        Route::get('/dashboard/pemilihan', [DashboardController::class, 'pemilihan'])->name('dashboard.pemilihan');
+
         Route::post('/pemilihan', [PemilihanController::class, 'create'])->name('pemilihan.create');
         Route::put('/pemilihan/{id}', [PemilihanController::class, 'update'])->name('pemilihan.update');
         Route::delete('/pemilihan/{id}', [PemilihanController::class, 'delete'])->name('pemilihan.delete');
@@ -32,5 +36,6 @@ Route::middleware('auth')->group(function () {
 
     // Logout
     Route::get('/logout', [AuthController::class,'logout'])->name('logout');
+
 });
 
