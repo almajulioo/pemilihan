@@ -24,11 +24,6 @@ class PemilihanController extends Controller
 
     public function update(Request $request, $id)
     {
-        $request -> validate([
-            'name' => 'required',
-            'start_date' => 'required',
-            'end_date' => 'required'
-        ]);
         $pemilihan = Pemilihan::find($id);
         if(!$pemilihan) {
             return back()->with('error','Pemilihan tidak ditemukan');

@@ -14,4 +14,9 @@ class Pemilihan extends Model
         'end_date',
     ];
     use HasFactory;
+
+    public function kandidats()
+    {
+        return $this->hasMany(Kandidat::class);
+    }
 }
