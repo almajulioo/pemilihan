@@ -5,7 +5,7 @@ use App\Http\Controllers\KandidatController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PemilihanController;
 use App\Http\Controllers\Frontend\BerandaController;
-use App\Http\Controllers\Dashboard\DashboardController;
+use App\Http\Controllers\Dashboard\PemilihanDashboard;
 
 
 // Route no middleware
@@ -23,15 +23,17 @@ Route::middleware('auth')->group(function () {
     // Role has to be admin
     Route::middleware('checkRole:admin')->group(function () {
         // Dashboard
-        Route::get('/dashboard/pemilihan', [DashboardController::class, 'pemilihan'])->name('dashboard.pemilihan');
+        Route::get('/dashboard/pemilihan', [PemilihanDashboard::class, 'pemilihan'])->name('dashboard.pemilihan');
+        Route::get('/dashboard/pemilihan/tambah', [PemilihanDashboard::class, 'tambahPemilihan'])->name('dashboard.pemilihan.tambah');
+        Route::get('/dashboard/pemilihan/update/{id}', [PemilihanDashboard::class, 'updatePemilihan'])->name('dashboard.pemilihan.update');
 
         Route::post('/pemilihan', [PemilihanController::class, 'create'])->name('pemilihan.create');
         Route::put('/pemilihan/{id}', [PemilihanController::class, 'update'])->name('pemilihan.update');
-        Route::delete('/pemilihan/{id}', [PemilihanController::class, 'delete'])->name('pemilihan.delete');
+        Route::get('/pemilihan/{id}', [PemilihanController::class, 'delete'])->name('pemilihan.delete');
 
         Route::post('/kandidat', [KandidatController::class, 'create'])->name('kandidat.create');
         Route::put('/kandidat/{id}', [KandidatController::class, 'update'])->name('kandidat.update');
-        Route::delete('/kandidat/{id}', [KandidatController::class, 'delete'])->name('kandidat.delete');
+        Route::get('/kandidat/{id}', [KandidatController::class, 'delete'])->name('kandidat.delete');
     });
 
     // Logout
