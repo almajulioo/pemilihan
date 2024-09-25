@@ -19,7 +19,8 @@ class PemilihanController extends Controller
             'start_date' => $request->start_date,
             'end_date' => $request->end_date
         ]);
-        return back()->with('success', 'Berhasil membuat pemilihan!');
+    
+        return redirect(route('dashboard.pemilihan.update', $pemilihan->id))->with('success', 'Berhasil membuat pemilihan!');
     }
 
     public function update(Request $request, $id)

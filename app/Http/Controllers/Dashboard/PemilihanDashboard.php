@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use Illuminate\Http\Request;
 use App\Models\Pemilihan;
+use App\Models\Kandidat;
 use Carbon\Carbon;
 
 class PemilihanDashboard
@@ -26,6 +27,7 @@ class PemilihanDashboard
 
     public function updatePemilihan($id){
         $pemilihan = Pemilihan::find($id);
-        return view('dashboard.pemilihan.update')->with(['pemilihan' => $pemilihan]);
+        $kandidats = Kandidat::where('pemilihan_id', $pemilihan->id)->get();
+        return view('dashboard.pemilihan.update')->with(['pemilihan' => $pemilihan, 'kandidats' => $kandidats]);
     }
 }

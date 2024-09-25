@@ -31,7 +31,7 @@ class KandidatController extends Controller
             'misi_2' => $request->misi_2,
             'misi_3' => $request->misi_3
         ]);
-        return back()->with('success', 'Berhasil menambahkan kandidat!');
+        return redirect(route('dashboard.pemilihan.update', $pemilihan->pemilihan_id))->with('success', 'Berhasil menambahkan kandidat!');
     }
 
     public function update(Request $request, $id)
@@ -41,7 +41,7 @@ class KandidatController extends Controller
             return back()->with('error','Kandidat tidak ditemukan');
         }
         $kandidat->update($request->all());
-        return back()->with('success', 'Berhasil mengupdate kandidat!');
+        return redirect(route('dashboard.pemilihan.update', $kandidat->pemilihan_id))->with('success', 'Berhasil mengupdate kandidat!');
     }
 
     public function delete($id)
