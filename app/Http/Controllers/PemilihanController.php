@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Bus\UpdatedBatchJobCounts;
 use Illuminate\Http\Request;
 use App\Models\Pemilihan;
+use App\Models\Vote;
 class PemilihanController extends Controller
 {
     public function create(Request $request)
@@ -48,5 +49,18 @@ class PemilihanController extends Controller
         }
         $pemilihan->delete();
         return back()->with('success', 'Berhasil menghapus pemilihan!');
+    }
+
+    public function vote($pemilihan_id, $kandidat_id){
+        $vote = Vote::where('pemilihan_id', $pemilihan_id)->where('user_id', auth()->user()->id)->first();
+        if($vote) {
+            return back()->with('error', 'Anda sudah memilih kandidat!');
+        }
+        Vote::create([
+            'pemilihan_id' => $pemilihan_id,
+            'kandidat_id' => $kandidat_id,
+            'user_id' => auth()->user()->id
+        ]);
+        return back()->with('success', 'Berhasil memilih kandidat!');
     }
 }

@@ -20,6 +20,7 @@ Route::middleware('auth')->group(function () {
     // Frontend
     Route::get('/', [BerandaController::class, 'index'])->name('frontend.beranda');
     Route::get('/pemilihan/{id}', [BerandaController::class, 'pemilihan'])->name('frontend.pemilihan');
+    Route::get('/pemilihan/{pemilihan_id}/vote/{kandidat_id}', [PemilihanController::class, 'vote'])->name('frontend.vote');
    
     // Role has to be admin
     Route::middleware('checkRole:admin')->group(function () {
