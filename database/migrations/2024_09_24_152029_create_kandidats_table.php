@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('kandidats', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('pemilihan_id');
+            $table->foreignId('pemilihan_id')->constrained('pemilihans')->onDelete('cascade');
             $table->integer('nomor_urut');
             $table->string("photo_url")->nullable();
             $table->string('name');
