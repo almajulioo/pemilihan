@@ -57,7 +57,7 @@
         <tbody>
             @foreach ($kandidats as $kandidat)
             <tr>
-                <td style="border-bottom: 1px solid #e2e8f0; padding: 0.75rem;">1</td>
+                <td style="border-bottom: 1px solid #e2e8f0; padding: 0.75rem;">{{$kandidat->nomor_urut}}</td>
                 <td style="border-bottom: 1px solid #e2e8f0; padding: 0.75rem;">
                     <img src="photo_url.jpg" alt="Photo" style="width: 50px; height: 50px; object-fit: cover; border-radius: 50%;">
                 </td>

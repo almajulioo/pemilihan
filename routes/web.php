@@ -19,6 +19,7 @@ Route::post('/register', [AuthController::class,'registerAction']);
 Route::middleware('auth')->group(function () {
     // Frontend
     Route::get('/', [BerandaController::class, 'index'])->name('frontend.beranda');
+    Route::get('/pemilihan/{id}', [BerandaController::class, 'pemilihan'])->name('frontend.pemilihan');
    
     // Role has to be admin
     Route::middleware('checkRole:admin')->group(function () {
@@ -32,15 +33,18 @@ Route::middleware('auth')->group(function () {
             Route::get('/pemilihan/{pemilihan_id}/kandidat/{id}', [KandidatDashboard::class, 'updateKandidat'])->name('dashboard.kandidat.update');
         });
 
-        // CRUD for Pemilihan
-        Route::post('/pemilihan', [PemilihanController::class, 'create'])->name('pemilihan.create');
-        Route::put('/pemilihan/{id}', [PemilihanController::class, 'update'])->name('pemilihan.update');
-        Route::get('/pemilihan/{id}', [PemilihanController::class, 'delete'])->name('pemilihan.delete');
-        
-        // CRUD for Kandidat
-        Route::post('/kandidat', [KandidatController::class, 'create'])->name('kandidat.create');
-        Route::put('/kandidat/{id}', [KandidatController::class, 'update'])->name('kandidat.update');
-        Route::get('/kandidat/{id}', [KandidatController::class, 'delete'])->name('kandidat.delete');
+        Route::prefix('/crud')->group(function () {
+            // CRUD for Pemilihan
+            Route::post('/pemilihan', [PemilihanController::class, 'create'])->name('pemilihan.create');
+            Route::put('/pemilihan/{id}', [PemilihanController::class, 'update'])->name('pemilihan.update');
+            Route::get('/pemilihan/{id}', [PemilihanController::class, 'delete'])->name('pemilihan.delete');
+            
+            // CRUD for Kandidat
+            Route::post('/kandidat', [KandidatController::class, 'create'])->name('kandidat.create');
+            Route::put('/kandidat/{id}', [KandidatController::class, 'update'])->name('kandidat.update');
+            Route::get('/kandidat/{id}', [KandidatController::class, 'delete'])->name('kandidat.delete');
+        });
+
     });
 
     // Logout

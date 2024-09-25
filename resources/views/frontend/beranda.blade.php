@@ -7,6 +7,13 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Ini Beranda</h1>
+    <h1>Pemilihan yang sedang berlangsung</h1>
+    @foreach ($pemilihans as $pemilihan)
+        <h2>Pemilihan {{$pemilihan->name}}</h2>
+        <p>Kandidat : {{$pemilihan->kandidats->count()}}</p>
+        <p>Mulai : {{$pemilihan->mulai}}</p>
+        <p>Berakhir : {{$pemilihan->berakhir}}</p>
+        <a href={{route('frontend.pemilihan', $pemilihan->id)}}>Ikut Voting</a>
+    @endforeach
 </body>
 </html>
