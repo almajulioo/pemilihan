@@ -18,6 +18,7 @@ class Kandidat extends Model
         'misi_1',
         'misi_2',
         'misi_3',
+        'kabinet'
     ];
     use HasFactory;
 

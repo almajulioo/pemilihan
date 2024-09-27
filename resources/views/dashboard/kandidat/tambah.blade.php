@@ -29,6 +29,12 @@
         <input type="text" name="name" id="name" style="width: 100%; padding: 0.5rem; border: 1px solid #cbd5e0; border-radius: 0.375rem;" required>
     </div>
 
+    <!-- Kabinet -->
+    <div style="margin-bottom: 1rem;">
+        <label for="kabinet" style="display: block; font-size: 1rem; color: #4a5568; margin-bottom: 0.5rem;">Kabinet</label>
+        <input type="text" name="kabinet" id="kabinet" rows="3" style="width: 100%; padding: 0.5rem; border: 1px solid #cbd5e0; border-radius: 0.375rem;" required></input type="text">
+    </div>
+
     <!-- Description -->
     <div style="margin-bottom: 1rem;">
         <label for="description" style="display: block; font-size: 1rem; color: #4a5568; margin-bottom: 0.5rem;">Description</label>

@@ -34,7 +34,7 @@ class AuthController extends Controller
 
     public function registerForm(){
         if(Auth::check()){
-            return redirect('frontend.beranda');
+            return redirect()->route('frontend.beranda');
         }else{
             return view('auth.register');
         }
