@@ -129,6 +129,7 @@
                     <td class="actions">
                         <a href="{{ route('dashboard.pemilihan.update', $pemilihan->id) }}" class="edit-btn">Edit</a>
                         <a onclick="return confirm('Are you sure?')" href="{{ route('pemilihan.delete', $pemilihan->id) }}" class="delete-btn">Delete</a>
+                        <a  href="{{ route('dashboard.hasil', $pemilihan->id) }}" class="edit-btn">Hasil</a>
                     </td>
                 </tr>
                 @endforeach

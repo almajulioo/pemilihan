@@ -109,9 +109,7 @@
                             <li>{{$pemilihan->kandidats[0]->misi_2}}</li>
                             <li>{{$pemilihan->kandidats[0]->misi_3}}</li>
                         </ol>
-                        <a
-                            class="text-greenhmif text-3xl bg-kandidat1 px-6 py-1 rounded-full italic drop-shadow-[0px_4px_4px_rgba(0,0,0,0.25)] font-medium"
-                            href="">See more</a>
+                        <a class="text-greenhmif text-3xl bg-kandidat1 px-6 py-1 rounded-full italic drop-shadow-[0px_4px_4px_rgba(0,0,0,0.25)] font-medium" href={{route('frontend.vote', ['pemilihan_id' => $pemilihan->id, 'kandidat_id' => $pemilihan->kandidats[0]->id])}} onclick="return confirm('Apakah anda yaking ingin vote {{$pemilihan->kandidats[0]->name}}?');" href="">Vote {{$pemilihan->kandidats[0]->name}}</a>
                     </div>
                 </div>
             </div>
@@ -160,9 +158,7 @@
                         <li>{{$pemilihan->kandidats[$i]->misi_2}}</li>
                         <li>{{$pemilihan->kandidats[$i]->misi_3}}</li>
                     </ol>
-                    <a
-                        class="text-greenhmif text-3xl bg-white px-6 py-1 rounded-full italic drop-shadow-[0px_4px_4px_rgba(0,0,0,0.25)] font-medium"
-                        href="">See more</a>
+                    <a class="text-greenhmif text-3xl bg-kandidat1 px-6 py-1 rounded-full italic drop-shadow-[0px_4px_4px_rgba(0,0,0,0.25)] font-medium" href={{route('frontend.vote', ['pemilihan_id' => $pemilihan->id, 'kandidat_id' => $pemilihan->kandidats[$i]->id])}} onclick="return confirm('Apakah anda yakin ingin vote {{$pemilihan->kandidats[$i]->name}}');" href="">Vote {{$pemilihan->kandidats[$i]->name}}</a>
                 </div>
             </div>
         </div>

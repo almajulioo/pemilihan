@@ -26,4 +26,9 @@ class Kandidat extends Model
     {
         return $this->belongsTo(Pemilihan::class);
     }
+
+    public function votes()
+    {
+        return $this->hasMany(Vote::class);
+    }
 }

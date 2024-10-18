@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Dashboard\HasilDashboard;
 use App\Http\Controllers\Dashboard\KandidatDashboard;
 use App\Http\Controllers\KandidatController;
 use Illuminate\Support\Facades\Route;
@@ -32,6 +33,7 @@ Route::middleware('auth')->group(function () {
 
             Route::get('/pemilihan/{id}/kandidat', [KandidatDashboard::class, 'tambahKandidat'])->name('dashboard.kandidat.tambah');
             Route::get('/pemilihan/{pemilihan_id}/kandidat/{id}', [KandidatDashboard::class, 'updateKandidat'])->name('dashboard.kandidat.update');
+            Route::get('/lihat-hasil/{pemilihan_id}', [HasilDashboard::class, 'hasil'])->name('dashboard.hasil');
         });
 
         Route::prefix('/crud')->group(function () {
